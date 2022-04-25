@@ -17,10 +17,21 @@ class ShoppingCart
 {
   items=[];
 
+  set cartItems(value) {
+    this.items = value
+    this.totalAmount.innerHTML = `<h2>Total: \${this.totalAmount.toFixed(2)} </h2>`
+  }
+  get totalAmount() {
+    const sum = this.items.reduce((prev,curItem)=> prev + curItem.price,0)
+    return sum; 
+  }
   addProduct(product)
   {
-    this.items.push(product);
-    this.totalOutput.innerHTML = `<h2>Total: \${1} </h2>`
+    // this.items.push(product);
+    // this.totalOutput.innerHTML = `<h2>Total: \${this.totalAmount} </h2>`
+    const updatedItems = [...this.items]; 
+    updatedIems.push(product); 
+    this.cartItems = updatedItems;
   }
 
   render()
